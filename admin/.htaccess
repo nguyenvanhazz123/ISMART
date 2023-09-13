@@ -1,0 +1,11 @@
+# Bật cho phép tạo đường link thân thiện
+RewriteEngine On
+
+# Chú ý: cần định nghia thêm base url trong header cho hệ thống
+
+# Định nghia đường link thân thiện
+RewriteRule ^([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=page&controller=index&action=detail&id=$2&slug=$1
+
+# RewriteRule ^bai-viet/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=page&controller=index&action=detail&id=$2&slug=$1
+
+# RewriteRule ^san-pham/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=page&controller=index&action=detail&id=$2&slug=$1

@@ -1,0 +1,33 @@
+# Bật cho phép tạo đường link thân thiện
+RewriteEngine On
+
+# Loại trừ các tệp có phần mở rộng là css, js, jpg, png, gif
+RewriteCond %{REQUEST_URI} !\.(css|js|jpg|png|gif)$
+
+# Chú ý: cần định nghia thêm base url trong header cho hệ thống
+
+
+# Định nghia đường link thân thiện
+    RewriteRule ^trang-chu.html$ index.php?mod=home&controller=index
+
+# Định nghĩa link của product
+
+    RewriteRule ^san-pham/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=product&controller=index&action=index&cat_id=$2&page=1&slug=$1
+    RewriteRule ^san-pham/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=product&controller=index&action=index&cat_id=$3&page=1&slug=$2&cat=&1
+    RewriteRule ^chi-tiet-san-pham/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=product&action=detail&id=$2&slug=$1
+#Định nghĩa blog
+    RewriteRule ^bai-viet.html$ index.php?mod=post&controller=index&page=1
+    RewriteRule ^chi-tiet-bai-viet/([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=post&action=detail&id=$2&slug=$1
+
+#Định nghĩa page
+    RewriteRule ^gioi-thieu.html$ index.php?mod=page&controller=index&action=index&id=1
+    RewriteRule ^lien-he.html$ index.php?mod=page&controller=index&action=index&id=2   
+
+#Định nghĩa giỏ hàng
+    RewriteRule ^gio-hang.html$ index.php?mod=cart&action=show
+
+#Định nghĩa thanh toán
+    RewriteRule ^thanh-toan.html$ index.php?mod=cart&action=checkout
+
+#filter
+    
